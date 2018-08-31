@@ -1,0 +1,68 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}{% endblock %}">
+    <link rel="stylesheet" href="{% static 'css/djpy.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/gemini-scrollbar.css' %}">
+  </head>
+<body>
+      
+  <div id="wrapper">
+    <header>
+
+      <div id="header_left">
+        <img src="{% static 'img/arrow-down-small-prelight.png' %}" alt="">
+      </div>
+
+      <div id="header_center">
+        Делаем сайт на Django
+     </div>
+
+      <div id="header_right">
+        <img src="{% static 'img/titlebutton-min-dark.png' %}" alt=""> 
+        <img src="{% static 'img/titlebutton-max-dark.png' %}" alt="">
+        <img src="{% static 'img/titlebutton-close-hover-dark.png' %}" alt=""> 
+      </div> 
+     
+    </header>
+
+      <nav>
+       <ul class="ul_nav">
+         <li class="li_str"><a href="{% url 'list_articles' %}">Статьи</a></li>
+         <li class="li_str"><a href="{% url 'list_tags' %}">Теги</a></li>
+         <li class="li_str"><a href="{% url 'contacts' %}">Контакты</a></li>
+       </ul>
+      </nav> 
+
+
+  <main>
+  <div id="scroll">
+    <article>
+        
+    {% block page %}{% endblock %}
+      
+    </article>
+   </div>
+  </main>
+
+<!-- gemini-scrollbar -->
+  <script src="{% static 'js/gemini-scrollbar.js' %}"></script>
+
+  <script>
+  window.onload = function() {
+        var ex2 = new GeminiScrollbar({
+        element: document.querySelector('#scroll'),
+        autoshow: true
+    }).create()
+  }
+  </script>
+  
+  </div>
+</body>
+</html>

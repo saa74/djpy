@@ -1,0 +1,24 @@
+{% extends 'box/base.html' %}
+
+{% block title %}Тег {{ tag_name }}{% endblock %}
+{% block description %}Выборка статей по тегу {{ tag_name }}{% endblock %}
+{% block keywords %}{{ tag_name }}{% endblock %}
+
+{% block page %}
+
+<font color="#7FFF00">dp@djpy</font><font color="#ffffff">:</font><font color="#3333ff">~</font><font color="#ffffff">$</font> grep -rl '<font color="#FFD700">{{ tag_name }}</font>' ~/Статьи
+
+<br>
+<br>
+
+<ul>
+    
+{% for article in articles %}
+
+    <li><a href="{% url 'singl_article' id_article=article.id %}">{{ article.name }}</a></li>
+
+{% endfor %}
+
+</ul>
+
+{% endblock %}

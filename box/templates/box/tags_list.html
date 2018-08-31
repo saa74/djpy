@@ -1,0 +1,24 @@
+{% extends 'box/base.html' %}
+
+{% block title %}Теги{% endblock %}
+{% block description %}Облако тегов{% endblock %}
+{% block keywords %}Теги{% endblock %}
+
+{% block page %}
+
+<font color="#7FFF00">dp@djpy</font><font color="#ffffff">:</font><font color="#3333ff">~</font><font color="#ffffff">$</font> cat ~/Статьи/<font color="#FFD700">Теги.txt</font>
+
+<br>
+<br>
+
+<ul>
+    
+{% for tag in tags %}
+
+    <li class="li_str"><a href="{% url 'tag_articles' id_tag=tag.id %}">{{ tag.name }}</a></li>
+    
+{% endfor %}
+
+</ul>
+
+{% endblock %}

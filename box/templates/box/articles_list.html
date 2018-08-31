@@ -1,0 +1,24 @@
+{% extends 'box/base.html' %}
+
+{% block title %}Делаем сайт на Django{% endblock %}
+{% block description %}Список статей о создании и развертывании сайта на Django{% endblock %}
+{% block keywords %}Django, Python, Debian, uWSGI, Nginx, VPS, SSL{% endblock %}
+
+{% block page %}
+
+<font color="#7FFF00">dp@djpy</font><font color="#ffffff">:</font><font color="#3333ff">~</font><font color="#ffffff">$</font> ls --sort=time --format=single-column ~/Статьи
+
+<br>
+<br>
+
+<ul>
+    
+{% for article in articles %}
+
+    <li><a href="{% url 'singl_article' id_article=article.id %}">{{ article.name }}</a></li>
+
+{% endfor %}
+
+</ul>
+
+{% endblock %}

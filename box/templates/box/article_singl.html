@@ -1,0 +1,32 @@
+{% extends 'box/base.html' %}
+
+{% block title %}{{ article.name }}{% endblock %}
+{% block description %}{{ article.description }}{% endblock %}
+{% block keywords %}{{ article.keywords }}{% endblock %}
+
+{% block page %}
+
+<font color="#7FFF00">dp@djpy</font><font color="#ffffff">:</font><font color="#3333ff">~</font><font color="#ffffff">$</font> cat ~/Статьи/<font color="#FFD700">{{ article.name }}.txt</font>
+
+<br>
+<br>
+
+<ul>
+     
+{% for tag in article.tag.all %}
+
+    <li class="li_str"><a href="{% url 'tag_articles' id_tag=tag.id %}">{{ tag.name }}</a></li>
+
+{% endfor %}
+
+</ul>
+
+<br>
+
+{{ article.text|safe }}
+
+<br>
+<br>
+
+<a href="{% url 'list_articles' %}">К списку статей</a>
+{% endblock %}
